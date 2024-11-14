@@ -1,5 +1,7 @@
 import { Album } from "../models/album.model.js";
 import { Song } from "../models/song.model.js";
+import cloudinary from "../lib/cloudinary.js";
+import { protectRoute } from "../middleware/auth.middleware.js";
 
 //helper function for cloudinary uploads
 const uploadToCloudinary = async (file, folder) => {
@@ -54,4 +56,62 @@ export const createSong = async (req, res, next) => {
     return res.status(500).json({ message: "Internal server error", error });
     next(error);
   }
+};
+
+export const deleteSong = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const song = await Song.findById(id);
+
+    //if song belongs to an album, update the album's songs array
+    if (song.albumId) {
+      await Album.findByIdAndUpdate(song.albumId, {
+        $pull: { songs: song._id },
+      });
+    }
+
+    await Song.findByIdAndDelete(id);
+    res.status(200).json({ message: "Song deleted" });
+  } catch (error) {
+    console.log("error in deleteSong", error);
+    return res.status(500).json({ message: "Internal server error", error });
+  }
+};
+
+export const createAlbum = async (req, res, next) => {
+  try {
+    const { title, artist, releaseYear } = req.body;
+    const { imageFile } = req.files;
+
+    const imageUrl = await uploadToCloudinary(imageFile, "image");
+
+    const album = await Album({
+      title,
+      artist,
+      imageUrl,
+      releaseYear,
+    });
+
+    await album.save();
+    res.status(201).json({ album });
+  } catch (error) {
+    console.log("error in createAlbum", error);
+    next(error);
+  }
+};
+
+export const deleteAlbum = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    await Song.deleteMany({ albumId: id });
+    await Album.findByIdAndDelete(id);
+  } catch (error) {
+    console.log("error in deleteAlbum", error);
+    next(error);
+  }
+};
+
+export const checkAdmin = (req, res, next) => {
+  res.status(200).json({ admin: true });
 };
