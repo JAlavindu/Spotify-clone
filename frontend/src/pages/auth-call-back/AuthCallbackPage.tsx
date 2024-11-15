@@ -3,7 +3,7 @@ import { axiosInstance } from "@/lib/axios";
 
 import { useUser } from "@clerk/clerk-react";
 import { Loader } from "lucide-react";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AuthCallbackPage = () => {

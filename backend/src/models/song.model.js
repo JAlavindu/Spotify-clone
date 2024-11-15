@@ -25,7 +25,7 @@ const songSchema = new mongoose.Schema(
     albumId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Album",
-      required: false, //Nilina- changed required-> false to override the error
+      required: true,
     },
   },
   { timestamps: true }

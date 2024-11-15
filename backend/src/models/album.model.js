@@ -16,7 +16,7 @@ const albumSchema = new mongoose.Schema(
     },
     releasYear: {
       type: Number,
-      required: false, //Nilina- changed required-> false to override the error
+      required: true,
     },
     songs: [
       {
