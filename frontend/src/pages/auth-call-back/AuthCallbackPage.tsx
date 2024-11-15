@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { axiosInstance } from "@/lib/axios";
+
 import { useUser } from "@clerk/clerk-react";
 import { Loader } from "lucide-react";
 import React, { useEffect, useRef } from "react";
@@ -11,6 +12,7 @@ const AuthCallbackPage = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const navigate = useNavigate();
   const syncAttempted = useRef(false);
+
   useEffect(() => {
     const syncUser = async () => {
       if (!isLoaded || !user || syncAttempted.current) return;
