@@ -22,6 +22,7 @@ const seedDatabase = async () => {
         audioUrl: "/songs/7.mp3",
         plays: Math.floor(Math.random() * 5000),
         duration: 39, // 0:39
+        albumId: new mongoose.Types.ObjectId(),
       },
       {
         title: "Neon Lights",
@@ -30,6 +31,7 @@ const seedDatabase = async () => {
         audioUrl: "/songs/5.mp3",
         plays: Math.floor(Math.random() * 5000),
         duration: 36, // 0:36
+        albumId: new mongoose.Types.ObjectId(),
       },
       {
         title: "Urban Jungle",
@@ -38,6 +40,7 @@ const seedDatabase = async () => {
         audioUrl: "/songs/15.mp3",
         plays: Math.floor(Math.random() * 5000),
         duration: 36, // 0:36
+        albumId: new mongoose.Types.ObjectId(),
       },
       {
         title: "Neon Dreams",
@@ -46,6 +49,7 @@ const seedDatabase = async () => {
         audioUrl: "/songs/13.mp3",
         plays: Math.floor(Math.random() * 5000),
         duration: 39, // 0:39
+        albumId: new mongoose.Types.ObjectId(),
       },
       {
         title: "Summer Daze",
@@ -54,6 +58,7 @@ const seedDatabase = async () => {
         audioUrl: "/songs/4.mp3",
         plays: Math.floor(Math.random() * 5000),
         duration: 24, // 0:24
+        albumId: new mongoose.Types.ObjectId(),
       },
       {
         title: "Ocean Waves",
@@ -62,6 +67,7 @@ const seedDatabase = async () => {
         audioUrl: "/songs/9.mp3",
         plays: Math.floor(Math.random() * 5000),
         duration: 28, // 0:28
+        albumId: new mongoose.Types.ObjectId(),
       },
       {
         title: "Crystal Rain",
@@ -70,6 +76,7 @@ const seedDatabase = async () => {
         audioUrl: "/songs/16.mp3",
         plays: Math.floor(Math.random() * 5000),
         duration: 39, // 0:39
+        albumId: new mongoose.Types.ObjectId(),
       },
       {
         title: "Starlight",
@@ -78,6 +85,7 @@ const seedDatabase = async () => {
         audioUrl: "/songs/10.mp3",
         plays: Math.floor(Math.random() * 5000),
         duration: 30, // 0:30
+        albumId: new mongoose.Types.ObjectId(),
       },
       {
         title: "Stay With Me",
@@ -86,6 +94,7 @@ const seedDatabase = async () => {
         audioUrl: "/songs/1.mp3",
         plays: Math.floor(Math.random() * 5000),
         duration: 46, // 0:46
+        albumId: new mongoose.Types.ObjectId(),
       },
       {
         title: "Midnight Drive",
@@ -94,6 +103,7 @@ const seedDatabase = async () => {
         audioUrl: "/songs/2.mp3",
         plays: Math.floor(Math.random() * 5000),
         duration: 41, // 0:41
+        albumId: new mongoose.Types.ObjectId(),
       },
       {
         title: "Moonlight Dance",
@@ -102,6 +112,7 @@ const seedDatabase = async () => {
         audioUrl: "/songs/14.mp3",
         plays: Math.floor(Math.random() * 5000),
         duration: 27, // 0:27
+        albumId: new mongoose.Types.ObjectId(),
       },
       {
         title: "Lost in Tokyo",
@@ -110,6 +121,7 @@ const seedDatabase = async () => {
         audioUrl: "/songs/3.mp3",
         plays: Math.floor(Math.random() * 5000),
         duration: 24, // 0:24
+        albumId: new mongoose.Types.ObjectId(),
       },
       {
         title: "Neon Tokyo",
@@ -118,6 +130,7 @@ const seedDatabase = async () => {
         audioUrl: "/songs/17.mp3",
         plays: Math.floor(Math.random() * 5000),
         duration: 39, // 0:39
+        albumId: new mongoose.Types.ObjectId(),
       },
       {
         title: "Purple Sunset",
@@ -126,6 +139,7 @@ const seedDatabase = async () => {
         audioUrl: "/songs/12.mp3",
         plays: Math.floor(Math.random() * 5000),
         duration: 17, // 0:17
+        albumId: new mongoose.Types.ObjectId(),
       },
     ]);
 

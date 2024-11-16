@@ -1,4 +1,4 @@
-// import React from "react";
+import React from "react";
 const PlaylistSkeleton = () => {
   return Array.from({ length: 7 }).map((_, i) => (
     <div key={i} className="p-2 rounded-md flex items-center gap-3">

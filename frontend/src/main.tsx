@@ -11,7 +11,6 @@ const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 if (!PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key");
 }
-console.log("Heelllo1");
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -19,7 +18,6 @@ createRoot(document.getElementById("root")!).render(
       <AuthProvider>
         <BrowserRouter>
           <App />
-          console.log("hELLO FROM THE OTHER SIDEE")
         </BrowserRouter>
       </AuthProvider>
     </ClerkProvider>

@@ -16,13 +16,12 @@ export const useMusicStore = create<MusicStore>((set) => ({
   error: null,
   fetchAlbums: async () => {
     set({ isLoading: true, error: null });
+
     try {
       const response = await axiosInstance.get("/albums");
       set({ albums: response.data });
     } catch (error: any) {
-      set({
-        error: error.response.data.message || "An unexpected error occurred",
-      });
+      set({ error: error.response.data.message });
     } finally {
       set({ isLoading: false });
     }
