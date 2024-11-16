@@ -15,12 +15,10 @@ const LeftSidebar = () => {
     fetchAlbums();
   }, [fetchAlbums]);
 
-  // console.log({ albums });
-
+  console.log({ albums });
   return (
     <div className="h-full flex flex-col gap-2">
       {/* Navigation menu */}
-
       <div className="rounded-lg bg-zinc-900 p-4">
         <div className="space-y-2">
           <Link
@@ -67,7 +65,7 @@ const LeftSidebar = () => {
           <div className="space-y-2">
             {isLoading ? (
               <PlaylistSkeleton />
-            ) : (
+            ) : Array.isArray(albums) && albums.length > 0 ? (
               albums.map((album) => (
                 <Link
                   to={`/albums/${album._id}`}
@@ -88,6 +86,8 @@ const LeftSidebar = () => {
                   </div>
                 </Link>
               ))
+            ) : (
+              <p className="text-zinc-400 text-sm">No albums found.</p>
             )}
           </div>
         </ScrollArea>
@@ -95,4 +95,5 @@ const LeftSidebar = () => {
     </div>
   );
 };
+
 export default LeftSidebar;
