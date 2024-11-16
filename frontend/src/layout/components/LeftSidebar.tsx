@@ -9,7 +9,6 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const LeftSidebar = () => {
-  // const isLoading = true;
   const { albums, fetchAlbums, isLoading } = useMusicStore();
 
   useEffect(() => {
@@ -73,11 +72,11 @@ const LeftSidebar = () => {
                 <Link
                   to={`/albums/${album._id}`}
                   key={album._id}
-                  className="p-2 hover:bg-zinc-800 rounded-md flewx items-center gap-3 group cursor-pointer"
+                  className="p-2 hover:bg-zinc-800 rounded-md flex items-center gap-3 group cursor-pointer"
                 >
                   <img
                     src={album.imageUrl}
-                    alt="Playlist image"
+                    alt="Playlist img"
                     className="size-12 rounded-md flex-shrink-0 object-cover"
                   />
 
