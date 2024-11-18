@@ -9,6 +9,7 @@ import LeftSidebar from "./components/LeftSidebar";
 // import AudioPlayer from "./components/AudioPlayer";
 // import { PlaybackControls } from "./components/PlaybackControls";
 import { useEffect, useState } from "react";
+import FriendsActivity from "./components/FriendsActivity";
 
 const MainLayout = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -57,7 +58,7 @@ const MainLayout = () => {
               maxSize={25}
               collapsedSize={0}
             >
-              {/* <FriendsActivity /> */}
+              <FriendsActivity />
             </ResizablePanel>
           </>
         )}

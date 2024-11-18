@@ -2,24 +2,28 @@ import { User } from "../models/user.model.js";
 
 export const authCallback = async (req, res, next) => {
   try {
-    const { id, firtsName, lastName, imageUrl } = req.body;
+    const { id, firstName, lastName, imageUrl } = req.body;
 
-    //check if user already exists
-    const user = await User.findOne({ clerkId: id });
-
-    if (!user) {
-      //SIGNUP
-      await User.create({
-        clerkId: id,
-        fullName: `${firtsName} ${lastName}`,
-        imageUrl,
-      });
+    if (!id || !firstName || !lastName || !imageUrl) {
+      return res.status(400).json({ message: "Invalid request data" });
     }
 
-    res.status(200).json({ success: true });
+    // Find the user or create if not exists
+    const user = await User.findOneAndUpdate(
+      { clerkId: id },
+      {
+        $setOnInsert: {
+          clerkId: id,
+          fullName: `${firstName} ${lastName}`,
+          imageUrl,
+        },
+      },
+      { new: true, upsert: true } // Create if not found
+    );
+
+    res.status(200).json({ success: true, user });
   } catch (error) {
-    console.log("error in auth callback", error);
-    res.status(500).json({ message: "Internal server error", error });
-    // next(error);
+    console.error("Error in auth callback", error);
+    next(error); // Pass error to centralized error handler
   }
 };

@@ -107,7 +107,7 @@ export const useMusicStore = create<MusicStore>((set) => ({
 
     try {
       const response = await axiosInstance.get("/albums");
-      set({ albums: response.data });
+      set({ albums: response.data.albums }); // Extract the actual albums array
     } catch (error: any) {
       set({ error: error.response.data.message });
     } finally {
@@ -119,9 +119,12 @@ export const useMusicStore = create<MusicStore>((set) => ({
     set({ isLoading: true, error: null });
     try {
       const response = await axiosInstance.get(`/albums/${id}`);
-      set({ currentAlbum: response.data });
+      set({ currentAlbum: response.data.albums });
     } catch (error: any) {
-      set({ error: error.response.data.message });
+      const errorMessage = error.response
+        ? error.response.data.message
+        : "An unexpected error occurred";
+      set({ error: errorMessage });
     } finally {
       set({ isLoading: false });
     }
