@@ -25,7 +25,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         const token = await getToken();
         updateApiToken(token);
         if (token) {
-          //4:09:50
+          await checkAdminStatus();
         }
       } catch (error: any) {
         updateApiToken(null);
