@@ -22,4 +22,4 @@ createRoot(document.getElementById("root")!).render(
       </AuthProvider>
     </ClerkProvider>
   </StrictMode>
-);
+)
